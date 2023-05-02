@@ -19,10 +19,7 @@ namespace Xadrez_console // Note: actual namespace depends on the project name.
           try
           {
             Console.Clear();
-            Tela.ImprimirTabuleiro(partida.Tab);
-            System.Console.WriteLine();
-            System.Console.WriteLine("Turno " + partida.Turno);
-            System.Console.WriteLine("Aguardando jogada: " + partida.JogadorAtual);
+            Tela.ImprimirPartida(partida);
             System.Console.WriteLine();
             System.Console.Write("Origem: ");
             Posicao origem = Tela.LerPosicaoXadrez().ToPosicao();
