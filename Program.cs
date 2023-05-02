@@ -15,22 +15,37 @@ namespace Xadrez_console // Note: actual namespace depends on the project name.
 
         while (!partida.Terminada)
         {
-          Console.Clear();
-          Tela.ImprimirTabuleiro(partida.Tab);
-          System.Console.WriteLine();
-          System.Console.Write("Origem: ");
-          Posicao origem = Tela.LerPosicaoXadrez().ToPosicao();
 
-          bool[,] posicoesPossiveis = partida.Tab.Peca(origem).MovimentosPossiveis();
+          try
+          {
+            Console.Clear();
+            Tela.ImprimirTabuleiro(partida.Tab);
+            System.Console.WriteLine();
+            System.Console.WriteLine("Turno " + partida.Turno);
+            System.Console.WriteLine("Aguardando jogada: " + partida.JogadorAtual);
+            System.Console.WriteLine();
+            System.Console.Write("Origem: ");
+            Posicao origem = Tela.LerPosicaoXadrez().ToPosicao();
+            partida.ValidarPosicaoDeOrigem(origem);
 
-          Console.Clear();
-          Tela.ImprimirTabuleiro(partida.Tab, posicoesPossiveis);
+            bool[,] posicoesPossiveis = partida.Tab.Peca(origem).MovimentosPossiveis();
 
-          System.Console.WriteLine();
-          System.Console.Write("Destino: ");
-          Posicao destino = Tela.LerPosicaoXadrez().ToPosicao();
+            Console.Clear();
+            Tela.ImprimirTabuleiro(partida.Tab, posicoesPossiveis);
 
-          partida.ExecutaMovimento(origem, destino);
+            System.Console.WriteLine();
+            System.Console.Write("Destino: ");
+            Posicao destino = Tela.LerPosicaoXadrez().ToPosicao();
+            partida.ValidarPosicaoDeDestino(origem, destino);
+
+            partida.RealizaJogada(origem, destino);
+          }
+          catch (TabuleiroException e)
+          {
+            System.Console.WriteLine(e.Message);
+            Console.ReadLine();
+          }
+
 
         }
 
