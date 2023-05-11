@@ -68,7 +68,7 @@ namespace Xadrez_console
         }
         System.Console.WriteLine();
       }
-      System.Console.WriteLine(" " + " " + "a b c d e f g e ");
+      System.Console.WriteLine(" " + " " + "a b c d e f g h ");
     }
 
     public static void ImprimirTabuleiro(Tabuleiro tab, bool[,] posicoesPossiveis)
@@ -94,7 +94,7 @@ namespace Xadrez_console
         }
         System.Console.WriteLine();
       }
-      System.Console.WriteLine(" " + " " + "a b c d e f g e ");
+      System.Console.WriteLine(" " + " " + "a b c d e f g h ");
       Console.BackgroundColor = fundoOriginal;
     }
 
